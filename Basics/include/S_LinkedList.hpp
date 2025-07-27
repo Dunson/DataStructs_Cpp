@@ -194,7 +194,21 @@ void S_LinkedList<T>::RemoveIdx(int idx)
 template <typename T>
 void S_LinkedList<T>::Delete()
 {
-    
+    // List is already empty
+    if (this->head == nullptr) { return; }
+
+    Node* current = this->head;
+    Node* temp;
+
+    while (current != nullptr) 
+    {
+        temp = current;
+        delete current;
+        current = temp->next;
+    }
+    this->head = nullptr;
+    this->tail = nullptr;
+    this->size = 0;
 
 }
 

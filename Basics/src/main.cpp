@@ -50,27 +50,20 @@ void SinglyListTest()
     { 
         if (i % 2 != 0)        
             mySinglyList.RemoveVal(i);
+        else
+            mySinglyList.RemoveIdx(i);
     } 
 
     mySinglyList.Print();
     std::cout << "List size: " << mySinglyList.GetSize() << std::endl;
+    mySinglyList.Delete();
+    mySinglyList.Print();
 } 
-
-void test()
-{
-    S_LinkedList<int> test;
-    test.Prepend(19);
-    test.Append(10);
-    test.Print();
-    test.RemoveIdx(1);
-    test.Print();
-}
-
+    
 int main()
 {
-    test();
     // ArrayListTest();
-    // SinglyListTest();
+    SinglyListTest();
     return 0;
  
 }
