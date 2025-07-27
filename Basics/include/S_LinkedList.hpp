@@ -147,7 +147,7 @@ void S_LinkedList<T>::RemoveVal(T data)
 template <typename T>
 void S_LinkedList<T>::RemoveIdx(int idx)
 {
-    
+        
 
 }
 

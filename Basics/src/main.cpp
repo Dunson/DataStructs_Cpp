@@ -1,9 +1,12 @@
-
+// Basic Linear Structures
 #include "../include/ArrayList.hpp"
 #include "../include/S_LinkedList.hpp"
 #include "../include/D_LinkedList.hpp"
 #include "../include/Queue.hpp"
 #include "../include/Stack.hpp"
+
+// Intermediate non-linear Structures
+
 
 void ArrayListTest()
 {
@@ -58,7 +61,7 @@ void SinglyListTest()
 int main()
 {
     // ArrayListTest();
-    SinglyListTest();
+    // SinglyListTest();
     return 0;
  
 }
