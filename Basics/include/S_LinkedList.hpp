@@ -125,11 +125,17 @@ void S_LinkedList<T>::RemoveVal(T data)
         if(current->data == data)
         {
             if (current == this->head) { this->RemoveHead(); break; }
-            if (current == this->tail) { prev->next = nullptr; delete current; this->size--; break; }
+            if (current == this->tail) 
+            { 
+                prev->next = nullptr; 
+                this->tail = prev;
+                delete current; 
+                this->size--; break; 
+            }
             
             temp = current;
+            prev->next = current->next;
             current = current->next;
-            prev->next = current;
             
             delete temp;
             this->size--;
@@ -147,7 +153,40 @@ void S_LinkedList<T>::RemoveVal(T data)
 template <typename T>
 void S_LinkedList<T>::RemoveIdx(int idx)
 {
-        
+    // Index out of bounds or Index = head
+    if(idx >= this->size) { return; }
+    if(idx == 0) { this->RemoveHead(); return; }
+    
+    Node* current = this->head;
+    Node* prev = nullptr;
+
+    int i = 0;
+    while (current != nullptr)
+    {
+        if (i == idx)
+        {
+            // Works, but increases time complexity to O(2n)
+            // this->RemoveVal(current->data);
+            
+            //Remove in place for O(n)
+            if (current == this->tail) 
+            { 
+                prev->next = nullptr; 
+                this->tail = prev; 
+                delete current; 
+            }
+            else 
+            {
+                prev->next = current->next;
+                delete current;
+            }
+            this->size--;
+            break;
+        }
+        prev = current;
+        current = current->next;
+        ++i;
+    }
 
 }
 
@@ -163,13 +202,16 @@ void S_LinkedList<T>::Delete()
 template <typename T>
 void S_LinkedList<T>::Print()
 {
+    if (this->size == 0)
+        std::cout << "List is empty!\n";
+
     Node* current = this->head;
     int i = 0;
     while(current != nullptr)
     {
-        i++;
         std::cout << "Node[" << i <<  "]: " << current->data << std::endl;
         current = current->next;
+        i++;
     }
 
 }

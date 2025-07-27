@@ -56,10 +56,19 @@ void SinglyListTest()
     std::cout << "List size: " << mySinglyList.GetSize() << std::endl;
 } 
 
-
+void test()
+{
+    S_LinkedList<int> test;
+    test.Prepend(19);
+    test.Append(10);
+    test.Print();
+    test.RemoveIdx(1);
+    test.Print();
+}
 
 int main()
 {
+    test();
     // ArrayListTest();
     // SinglyListTest();
     return 0;
